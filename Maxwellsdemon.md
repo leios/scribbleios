@@ -1,9 +1,13 @@
 ---
 layout: page
-title: Maxwell's Demon <span style="color:green">|100|</span>
+title: Maxwell's Demon
+completion: 100
+completion_color: green
 ---
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/5niDIoptyIU" frameborder="0" allowfullscreen></iframe>
+<div class="youtube-16-9">
+  <iframe height="100%" width="100%" src="https://www.youtube.com/embed/5niDIoptyIU" frameborder="0" allowfullscreen=""></iframe>
+</div>
 
 * [Background](#bg)
 * [About the code](#code)

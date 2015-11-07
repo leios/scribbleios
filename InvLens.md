@@ -1,6 +1,17 @@
 ---
 layout: page
-title: Invisible Lens <span style="color:yellow">|75|</span>
+title: Invisible Lens
+completion: 75
+completion_color: yellow
 ---
 
-Coming Soon!
+* [Background](#bg)
+* [About the code](#code)
+
+<a name="bg"></a>
+
+##Background##
+
+<a href name="code"></a>
+
+## About the code ##
