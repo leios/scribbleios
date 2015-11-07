@@ -1,15 +1,23 @@
 ---
 layout: page
-title: Maxwell's demon
+title: Maxwell's Demon <span style="color:green">|100|</span>
 ---
 
+{% youtube 5niDIoptyIU%}
+
+* [Background](#bg)
+* [About the code](#code)
+
+<a name="bg"></a>
+
+##Background##
 
 So. Let's talk about time travel. I hate to break it to ya, but time travel is 
 theoretically impossible. It's not a matter of building or engineering a time
 travelling device. It's a matter of creating theoretical breakthroughs that can
 combat the arrows of time.
 
-See. Time moves forward. It always moves forward and only makes sense in one 
+See, time moves forward. It always moves forward and only makes sense in one 
 direction: forward. Why? Because of a number of things. Every natural 
 time-dependent phenomenon has a reason for moving in the direction it does.
 Sure, there are some physics equations that are essentially time-independent, 
@@ -90,3 +98,26 @@ fridge combined into a single device!
 
 And this is Maxwell's Demon: A sheet of plastic that allows only certain 
 particles to pass through. A simple concept with revolutionary results!
+
+<a href name="code"></a>
+
+## About the code ##
+
+The code for out Maxwell's Demon simulation can be found [here](https://github.com/leios/simuleios/tree/master/MD/demon), feel free to check it out! It is a simple event-driven [Molecular Dynamics](http://introcs.cs.princeton.edu/java/assignments/collisions.html) (MD) simulation in 3 dimensions. What does this mean?
+
+Well, imagine that every particle in the simulation is a hard sphere of sorts -- like billiard balls. If we give them all an initial kick, they'll be moving all around and bouncing off each other, like billiard balls do. In this case, we know how the should interact with each other (it's a super well-solved system). We basically need to take into account 2 interaction types: 
+
+1. Particle on particle
+2. Particle on wall
+
+We assume that the chances of more than two particles interacting is negligible.
+
+Now. Let's take a step back and think about the simulation. When most people think about MD simulations, they think about time-driven ones. Every timestep, we move the particles forward a certain amount depending on their initial velocity. If it happens that a particle overlaps with something, we deal with the interaction accordingly. This is a perfectly legitimate way of doing MD; however, because our simulation is (in a sense) simple, we can do something different and exactly solve the interactions in our system with some simple physics formulae.
+
+Basically, the algorithm creates a list of all the next interactions the particles will undergo and sorts the list by which interactions will occur first. It then moves the entire algorithm to that timestep and recalculates the necessary elements in the list, sorting them again by which interactions will occur first.
+
+In the case of a traditional event-driven MD simulation, this simulation keeps moving forward until a set timestep; however, this is not quite traditional. It's Maxwell's demon! Instead of just stopping the simulation at a particular timestep, we instead allow the particles to thermalize between two boxes. Once complete, we then insert the demon in the center of the box, which will sort the particles according to their velocity. If a particle's velocity is faster than the average velocity of all the particles, it is only allowed to the right. If it is slower, it will only be allowed to pass into the left. In this way, we'vesifted the hot and cold particles into two separate boxes, recreating Maxwell's Demon.
+
+If you are interested in visualizing the code via blender, check out [this code](https://github.com/leios/simuleios/blob/master/visualization/demon.py).
+
+

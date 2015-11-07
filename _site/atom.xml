@@ -4,7 +4,7 @@
  <title>LeiosOS</title>
  <link href="http://https://www.youtube.com/c/leiosos/atom.xml" rel="self"/>
  <link href="http://https://www.youtube.com/c/leiosos/"/>
- <updated>2015-11-07T07:09:30+09:00</updated>
+ <updated>2015-11-07T11:08:25+09:00</updated>
  <id>http://https://www.youtube.com/c/leiosos</id>
  <author>
    <name>James Schloss</name>
@@ -17,7 +17,21 @@
    <link href="http://https://www.youtube.com/c/leiosos/2015/11/07/home/"/>
    <updated>2015-11-07T00:00:00+09:00</updated>
    <id>http://https://www.youtube.com/c/leiosos/2015/11/07/home</id>
-   <content type="html">&lt;p&gt;Welcome to My site!&lt;/p&gt;
+   <content type="html">&lt;p&gt;Hello and welcome to LeiosOS, the hub for all online projects lead by James Schloss (Leios)! In this remote cave of the internet, we rediscover the laws of nature through blood, sweat, and code (in varying quantities). Feel free to check out our work on the grey bar over there. If you like what you see, check out our community on &lt;a href=&quot;http://www.twitch.tv/simuleios&quot;&gt;Twitch&lt;/a&gt; (5-7 AM JST) or &lt;a href=&quot;https://www.youtube.com/c/leiosos&quot;&gt;Youtube&lt;/a&gt; (every other Sunday).&lt;/p&gt;
+
+&lt;p&gt;I have marked all of the projects we have worked on with a number ranging &lt;span style=&quot;color:red&quot;&gt;0&lt;/span&gt; - &lt;span style=&quot;color:green&quot;&gt;100&lt;/span&gt; depending on their completeness. Projects that are fully complete have youtube videos accompanying them that describe what the project was and why it was / is cool.&lt;/p&gt;
+
+&lt;p&gt;A few quick notes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;My actual research will not be hosted on this site (at least not until after it has been published).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Feel free to comment on anything or drop me a &lt;a href=&quot;https://twitter.com/LeiosOS&quot;&gt;tweet&lt;/a&gt;. If I am wrong about something, I am wrong about something. Be sure to let me know so I can fix it in the near future!&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;All of these projects are licenced under the MIT license, which means it is open source, so feel free to use it; however, if any of this work is ever used in a research project, please let me know and I will do my best to help out in any way I can!&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Toodles,&lt;/p&gt;
+
+&lt;p&gt;Leios&lt;/p&gt;
 </content>
  </entry>
  
