@@ -3,7 +3,7 @@ layout: page
 title: Maxwell's Demon <span style="color:green">|100|</span>
 ---
 
-{% youtube 5niDIoptyIU%}
+<iframe width="640" height="360" src="https://www.youtube.com/embed/5niDIoptyIU" frameborder="0" allowfullscreen></iframe>
 
 * [Background](#bg)
 * [About the code](#code)
