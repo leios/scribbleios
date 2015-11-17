@@ -59,18 +59,6 @@
       
         
           
-            <a class="sidebar-nav-item" href="/00.QRW/"> Quantum Random Walk <span style="font-family:monospace; color: red">0%</span></a>
-          
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/00.Rainbow/"> Rainbows <span style="font-family:monospace; color: red">0%</span></a>
-          
-        
-      
-        
-          
         
       
         
@@ -121,21 +109,11 @@
 
 <h2>Background</h2>
 
-<p>COMING SOON</p>
+<p>So, light is an intertesting thing. It&#39;s absolutely fundamental to our lives in every possible way. Even so... understanding the true beauty of light took millenia, with some of the brightest human minds devoted to understanding it. Looking at light, though, it is not immediately obvious why.</p>
 
-<p><a href name="code"></a></p>
+<p>Let&#39;s think about light, then. What is it? Well, it might be easier to describe something it is not: a shadow. In fact, any toddler can tell you that when light hits something, it leaves a shadow on the other side. This interaction between light, objects, and shadows led many scientists to believe that light acted as a line of particles, all chained together. This wasn&#39;t inherently wrong, but it wasn&#39;t completely right either. It turns out that light can also act as a wave. How? Well, to answer this question, we need to talk a little more about what light is in the first place.</p>
 
-<h2>Time-dependent Ray Tracing</h2>
-
-<p>COMING SOON</p>
-
-<p><a href name="FDTD"></a></p>
-
-<h2>Finite Difference Time Domain (FDTD)</h2>
-
-<p>The Finite Difference Time Domain (FDTD) method is one of the most useful computational methods in the field of electricity and magnetism (which is a pretty active field, if you know the right people). What is it? It&#39;s basically a simulation of the Electric and Magnetic fields in a typical electromagnetic wave. How does it work? Well, that might be a little complicated to explain, so let&#39;s start with soemthing simple-ish: Maxwell&#39;s Equations.</p>
-
-<p>Maxwell&#39;s Equations are incredibly useful. They tell us how electric and magnetic fields are related to each other in time and space, in particular, they look like this:</p>
+<p>Light is something called an electromagnetic wave. What is that? Well, an electric field is the thing that causes like charges to repel and opposite charges to attract, and a magnetic field does the same thing except with magnets. These two fields follow particular equations known as Maxwell&#39;s equations that can be written as:</p>
 
 <p>$$\nabla \cdot \vec{B} = 0$$</p>
 
@@ -145,7 +123,8 @@
 
 <p>$$\nabla \cdot \vec{E} = -\frac{\partial \vec{B}}{\partial t}$$</p>
 
-<p>What do these mean? Well,  that depends on who you ask and what we are talking about, but for the most part, the mean the following:</p>
+<p>What do these mean? Well,  that depends on who you ask and what we are talking a
+bout, but for the most part, the mean the following:</p>
 
 <ol>
 <li>There are no Magnetic monopoles</li>
@@ -154,7 +133,47 @@
 <li>[Faraday&#39;s Law] The electric field is related to the change in magnetic field over time</li>
 </ol>
 
-<p>For FDTD simulations, we only care about the last two because we are trying to find a way to relate the electric and magnetic field in a wave. I mean, for this purpose, who cares if charge is conserved or if there are no such things as magnetic monopoles? </p>
+<p>For our purposes, we only care about the last two: Amphere&#39;s Law and Faraday&#39;s Law. These relate the electric and magnetic fields as they change in time. Basically, they mean that whenever the electric field changes in one direction, the magnetic field must change in another direction, and any time the magnetic field changes in some direction, the electric field must change in another direction. Because of these laws, the electric and magnetic fields must always be perpendicular. </p>
+
+<p>In the case of light, this means that the electric field may move up and down, while the magnetic field moves in and out and the light itself moves forward. In this way, light is a truly 3-dimensional object. </p>
+
+<p>But how does this related to the whole ray vs wave argument? Well, the electromagnetic wave that is light moves forward, but is made of two diffferent waveforms. This means that when we look at light from a distance, it acts as a ray. We don&#39;t even notice the fact that it is a wave hidden in disguise; however, if we start looking closer... all of a sudden we realize that there are some wave-like properties to deal with like diffraction. Now, to be clear: these wave-like phenomenon are only noticeable when the distance in which we are interacting with the light is comparable to the wavelength of the light.</p>
+
+<p>I believe this is a decent enough introduction to light, so let&#39;s talk about an abject that light often interacts with: lenses.</p>
+
+<p>When we consider light as a ray, it interacts with a lens via Snell&#39;s Law:</p>
+
+<p>$$ n _1 \sin (\theta _1)  = n _2 \sin (\theta _2) $$</p>
+
+<p>This equation basically relates the angle of a wave entering a lens with the angle of a wave within the lens, itself. In this case, <em>n</em> is something known as an &quot;Index of Refraction,&quot; which is basically a ratio of how dens a medium is when compared to the outside air. If we draw a line perpendicular to the surface of the lens, and assume that the lens is denser than the air outside of it, then the ray will bend towards that line as it enters the lens. If it leaves the lens, it will bend back to the angle it was before.</p>
+
+<p>Now here&#39;s an interesting thought: what if the index of refraction inside the lens was not constant, but instead changed as the light moved through it? Well, in principle the ray would be entering consecutive layers of new lenses. In this way, we could arbitrarily force the ray of light to draw structures for us... or we could do something else.</p>
+
+<p>We could make the lens, itself, invisible!</p>
+
+<p>How? Well, all we need to do is match the rays of light on one side of the lens with the rays of light on the other side of the lens. In this way, an observer would not even notice a difference when looking through the lens. Well, that&#39;s not completely true. An astute observer might recognize a small time delay, but why would that matter? I mean, the delay would be related to the time it took for light to weave it&#39;s way through the lens and light is the fastest thing in the known universe! Surely the time delay would be negligible!</p>
+
+<p>Well, yes. When we consider light to be a ray, it is totally negligible; however, if we consider light to be a wave... we now need to make sure that the time delay perfectly aligns with the light such that the wavefronts do not look disturbed.</p>
+
+<p>In order to really do this system justice, we need to simulate it twice, once with time-dependent ray-tracing and another with one of the most useful physics algorithms out there: Finite-Difference Time Domain (FDTD). That&#39;s exactly what we are going to do! </p>
+
+<p><a href name="code"></a></p>
+
+<h2>Time-dependent Ray Tracing</h2>
+
+<p>Remember from our discussion before, the ray approximation of light is only valid when the distance in which we are interacting with the light is much, much greater than the wavelength of the light. In math-speak, this is:</p>
+
+<p>$$\lambda \ll d$$</p>
+
+<p>MORE COMING SOON</p>
+
+<p><a href name="FDTD"></a></p>
+
+<h2>Finite Difference Time Domain (FDTD)</h2>
+
+<p>The Finite Difference Time Domain (FDTD) method is one of the most useful computational methods in the field of electricity and magnetism (which is a pretty active field, if you know the right people). What is it? It&#39;s basically a simulation of the Electric and Magnetic fields in a typical electromagnetic wave. How does it work? Well, that might be a little complicated to explain, so let&#39;s start with something simple-ish: Maxwell&#39;s Equations.</p>
+
+<p>Again, for FDTD simulations we only care about Amphere&#39;s Law and Faraday&#39;s Law because we are trying to find a way to relate the electric and magnetic field in a wave. I mean, for this purpose, who cares if charge is conserved or if there are no such things as magnetic monopoles? </p>
 
 <p>From this information, it would look like we have equations and we know what electromagnetic waves should look like, so that should mean that we are set to start our simulation, right?</p>
 
