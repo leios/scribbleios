@@ -21,3 +21,6 @@ paginate:         5
 
 github:
   repo:           https://github.com/leios/simuleios
+
+gems:
+  - jekyll-feed
