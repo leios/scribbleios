@@ -10,14 +10,12 @@ relative_permalinks: true
 title:            LeiosOS
 tagline:          'Science, stories, and silly questions'
 description:      'This is a site for James Schloss, physics PhD student at <a href="http://www.oist.jp/" target="_blank">OIST</a>. We solve silly questions with code.'
-url:              http://https://www.youtube.com/c/leiosos
+url:              https://leios.github.io
 baseurl:          /
 
 author:
   name:           'James Schloss'
   url:            https://twitter.com/leiosos
-
-paginate:         5
 
 github:
   repo:           https://github.com/leios/simuleios
