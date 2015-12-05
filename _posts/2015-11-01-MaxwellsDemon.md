@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Maxwell's Demon
-completion: 100
+completion: 100%
 completion_color: green
 permalink: /99.MaxwellsDemon
 ---
