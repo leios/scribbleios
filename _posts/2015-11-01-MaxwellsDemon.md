@@ -15,7 +15,7 @@ permalink: /99MaxwellsDemon
 
 <a name="bg"></a>
 
-##Background
+## Background
 
 So. Let's talk about time travel. I hate to break it to ya, but time travel is 
 theoretically impossible. It's not a matter of building or engineering a time
