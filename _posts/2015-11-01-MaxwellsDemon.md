@@ -15,7 +15,7 @@ permalink: /99MaxwellsDemon
 
 <a name="bg"></a>
 
-##Background##
+##Background
 
 So. Let's talk about time travel. I hate to break it to ya, but time travel is 
 theoretically impossible. It's not a matter of building or engineering a time
@@ -106,7 +106,7 @@ particles to pass through. A simple concept with revolutionary results!
 
 <a href name="code"></a>
 
-## About the code ##
+## About the code
 
 The code for out Maxwell's Demon simulation can be found [here](https://github.com/leios/simuleios/tree/master/MD/demon), feel free to check it out! It is a simple event-driven [Molecular Dynamics](http://introcs.cs.princeton.edu/java/assignments/collisions.html) (MD) simulation in 3 dimensions. What does this mean?
 
