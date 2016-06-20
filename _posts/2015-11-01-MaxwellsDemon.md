@@ -3,7 +3,7 @@ layout: page
 title: Maxwell's Demon
 completion: 100%
 completion_color: green
-permalink: /99.MaxwellsDemon
+permalink: /99MaxwellsDemon
 ---
 
 <div class="youtube-16-9">

@@ -3,7 +3,7 @@
 <generator uri="http://jekyllrb.com" version="2.4.0">Jekyll</generator>
 <link href="https://leios.github.io//feed.xml" rel="self" type="application/atom+xml" />
 <link href="https://leios.github.io//" rel="alternate" type="text/html" />
-<updated>2016-06-20T19:21:09+09:00</updated>
+<updated>2016-06-20T19:30:52+09:00</updated>
 <id>https://leios.github.io//</id>
 <subtitle>This is a site for James Schloss, physics PhD student at &lt;a href=&quot;http://www.oist.jp/&quot; target=&quot;_blank&quot;&gt;OIST&lt;/a&gt;. We solve silly questions with code.</subtitle>
 <author>
@@ -162,11 +162,11 @@ In this way, we have simulated Maxwell’s equations in distritized time and spa
 </entry>
 <entry>
 <title>Maxwell’s Demon</title>
-<link href="https://leios.github.io//99.MaxwellsDemon" rel="alternate" type="text/html" title="Maxwell&#39;s Demon" />
+<link href="https://leios.github.io//99MaxwellsDemon" rel="alternate" type="text/html" title="Maxwell&#39;s Demon" />
 <published>2015-11-01T00:00:00+09:00</published>
 <updated>2015-11-01T00:00:00+09:00</updated>
 <id>https://leios.github.io//MaxwellsDemon</id>
-<content type="html" xml:base="https://leios.github.io//99.MaxwellsDemon">&lt;div class=&quot;youtube-16-9&quot;&gt;
+<content type="html" xml:base="https://leios.github.io//99MaxwellsDemon">&lt;div class=&quot;youtube-16-9&quot;&gt;
   &lt;iframe height=&quot;100%&quot; width=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/5niDIoptyIU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
