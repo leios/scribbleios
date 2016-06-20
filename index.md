@@ -1,9 +1,7 @@
 ---
-layout: default
+layout: page
 title: Home
 ---
-
-#Home
 
 Hello and welcome to LeiosOS, the hub for all online projects lead by James Schloss (Leios)!
 In this remote cave of the internet, we rediscover the laws of nature through blood, sweat, and code (in varying quantities).
