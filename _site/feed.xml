@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <generator uri="http://jekyllrb.com" version="2.4.0">Jekyll</generator>
-<link href="//leios.github.io//feed.xml" rel="self" type="application/atom+xml" />
-<link href="//leios.github.io//" rel="alternate" type="text/html" />
-<updated>2015-11-27T21:02:49+09:00</updated>
-<id>//leios.github.io//</id>
+<link href="https://leios.github.io//feed.xml" rel="self" type="application/atom+xml" />
+<link href="https://leios.github.io//" rel="alternate" type="text/html" />
+<updated>2016-06-20T16:29:21+09:00</updated>
+<id>https://leios.github.io//</id>
 <subtitle>This is a site for James Schloss, physics PhD student at &lt;a href=&quot;http://www.oist.jp/&quot; target=&quot;_blank&quot;&gt;OIST&lt;/a&gt;. We solve silly questions with code.</subtitle>
 <author>
 <name>James Schloss</name>
 </author>
 <entry>
 <title>Invisible Lens</title>
-<link href="//leios.github.io//invlens" rel="alternate" type="text/html" title="Invisible Lens" />
+<link href="https://leios.github.io//invlens" rel="alternate" type="text/html" title="Invisible Lens" />
 <published>2015-11-20T00:00:00+09:00</published>
 <updated>2015-11-20T00:00:00+09:00</updated>
-<id>//leios.github.io//InvLens</id>
-<content type="html" xml:base="//leios.github.io//invlens">&lt;ul&gt;
+<id>https://leios.github.io//InvLens</id>
+<content type="html" xml:base="https://leios.github.io//invlens">&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#bg&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#code&quot;&gt;Time-dependent raytracing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#FDTD&quot;&gt;Finite-Difference Time Domain (FDTD)&lt;/a&gt;
@@ -163,11 +163,11 @@ In this way, we have simulated Maxwell&amp;#39;s equations in distritized time a
 </entry>
 <entry>
 <title>Maxwell&amp;#39;s Demon</title>
-<link href="//leios.github.io//99.MaxwellsDemon" rel="alternate" type="text/html" title="Maxwell&#39;s Demon" />
+<link href="https://leios.github.io//99.MaxwellsDemon" rel="alternate" type="text/html" title="Maxwell&#39;s Demon" />
 <published>2015-11-01T00:00:00+09:00</published>
 <updated>2015-11-01T00:00:00+09:00</updated>
-<id>//leios.github.io//MaxwellsDemon</id>
-<content type="html" xml:base="//leios.github.io//99.MaxwellsDemon">&lt;div class=&quot;youtube-16-9&quot;&gt;
+<id>https://leios.github.io//MaxwellsDemon</id>
+<content type="html" xml:base="https://leios.github.io//99.MaxwellsDemon">&lt;div class=&quot;youtube-16-9&quot;&gt;
   &lt;iframe height=&quot;100%&quot; width=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/5niDIoptyIU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>LeiosOS</title>
- <link href="//leios.github.io/atom.xml" rel="self"/>
- <link href="//leios.github.io/"/>
- <updated>2015-11-27T21:02:49+09:00</updated>
- <id>//leios.github.io</id>
+ <link href="https://leios.github.io/atom.xml" rel="self"/>
+ <link href="https://leios.github.io/"/>
+ <updated>2016-06-20T16:29:21+09:00</updated>
+ <id>https://leios.github.io</id>
  <author>
    <name>James Schloss</name>
    <email></email>
@@ -14,9 +14,9 @@
  
   <entry>
    <title>Invisible Lens</title>
-   <link href="//leios.github.io/invlens"/>
+   <link href="https://leios.github.io/invlens"/>
    <updated>2015-11-20T00:00:00+09:00</updated>
-   <id>//leios.github.io/InvLens</id>
+   <id>https://leios.github.io/InvLens</id>
    <content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#bg&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#code&quot;&gt;Time-dependent raytracing&lt;/a&gt;&lt;/li&gt;
@@ -165,9 +165,9 @@ In this way, we have simulated Maxwell&amp;#39;s equations in distritized time a
  
   <entry>
    <title>Maxwell's Demon</title>
-   <link href="//leios.github.io/99.MaxwellsDemon"/>
+   <link href="https://leios.github.io/99.MaxwellsDemon"/>
    <updated>2015-11-01T00:00:00+09:00</updated>
-   <id>//leios.github.io/MaxwellsDemon</id>
+   <id>https://leios.github.io/MaxwellsDemon</id>
    <content type="html">&lt;div class=&quot;youtube-16-9&quot;&gt;
   &lt;iframe height=&quot;100%&quot; width=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/5niDIoptyIU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
