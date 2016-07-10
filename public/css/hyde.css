@@ -264,3 +264,8 @@ a.sidebar-nav-item:focus {
   bottom: 0;
 }
 
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}

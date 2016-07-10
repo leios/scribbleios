@@ -4,13 +4,293 @@
  <title>LeiosOS</title>
  <link href="https://leios.github.io/atom.xml" rel="self"/>
  <link href="https://leios.github.io/"/>
- <updated>2016-06-20T19:44:54+09:00</updated>
+ <updated>2016-07-10T12:19:30+09:00</updated>
  <id>https://leios.github.io</id>
  <author>
    <name>James Schloss</name>
    <email></email>
  </author>
 
+ 
+  <entry>
+   <title>Batman Integration</title>
+   <link href="https://leios.github.io/Batman_Montecarlo"/>
+   <updated>2016-07-10T00:00:00+09:00</updated>
+   <id>https://leios.github.io/Batman</id>
+   <content type="html">&lt;div class=&quot;youtube-16-9&quot;&gt;
+  &lt;iframe height=&quot;100%&quot; width=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/AyBNnkYrSWY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#bg&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#BatmanCurve&quot;&gt;Integrating the Batman Curve&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a name=&quot;bg&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;The Monte Carlo algorithm is used all over the world for a number of things.
+In physics, it is often used to find integrals of poorly-behaved functions, and it works incredibly well for that!
+Let’s take a minute to describe how the Monte Carlo algorithm works and why it’s cool.&lt;/p&gt;
+
+&lt;p&gt;Firstly, let’s define what an integral is: it is a fancy way to find an area.
+For now, that’s all we need to know. 
+Sure, there are plenty of people who make it way, way more complicated than that, but the simpler the definition, the simpler the algorithm.
+I like simple algorithms.&lt;/p&gt;
+
+&lt;p&gt;So, if an integral is just an area, what do we need to do to find that area?
+Well, use geometry!
+If we have a box, the area of the box is obviously its &lt;script type=&quot;math/tex&quot;&gt;width \times height&lt;/script&gt;. 
+If we have a triangle, the area is simply &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{2} width \times height&lt;/script&gt;. 
+Generally, the more complicated the shape, the harder it is to find the shape’s area from geometry.&lt;/p&gt;
+
+&lt;p&gt;That said, we don’t really need to find the shape of the object we are integrating to find it’s area.
+Instead, we can take a simple object, find the area of that and then embed a more complicated object inside of it. 
+If we can find the ratio of how filled the simple object is by the more complicated object inside of it, then we can find the area of the complicated object like so:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Ratio \times Area\ of\ simple\ object&lt;/script&gt;
+
+&lt;p&gt;Of course, this will only work if the simple object is larger than the more complicated one, such that the complicated object falls perfectly inside of the larger object’s boundaries.&lt;/p&gt;
+
+&lt;p&gt;Let’s take the example of a circle and square:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/Batman/square_circle.png&quot; alt=&quot;Circle inside of Square&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this case, the area of the circle is &lt;script type=&quot;math/tex&quot;&gt;\pi \times Radius^2&lt;/script&gt; and the area of the square is &lt;script type=&quot;math/tex&quot;&gt;4 * Radius^2&lt;/script&gt;. 
+This means that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Ratio = \frac{\pi \times Radius^2}{4 * Radius^2} = \frac{\pi}{4}&lt;/script&gt;
+
+&lt;p&gt;From here, it’s obvious that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Ratio \times Area\ of\ Square = \frac{\pi}{4} \times 4 * Radius^2 = \pi \times Radius^2&lt;/script&gt;
+
+&lt;p&gt;Or the area of the circle.&lt;/p&gt;
+
+&lt;p&gt;But now we have a question: How do we find that ratio for arbitrary shapes?
+Well, Monte Carlo’s solution to this is &lt;em&gt;Random Sampling&lt;/em&gt;.
+If we take a bunch of points in the simple region with the more complicated shape inside, then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Ratio = \frac{Count\ in\ Complicated\ Shape}{Count\ in\ Box}&lt;/script&gt;
+
+&lt;p&gt;And that’s pretty cool. 
+It means that if we take a whole bunch of points, we should be able to find the ratio and integrate any arbitrarily shaped / size object!
+For the example above:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/Batman/MonteCarlo.gif&quot; alt=&quot;gif of simple Monte Carlo algorithm&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And we see that the ratio is pretty darn close to &lt;script type=&quot;math/tex&quot;&gt;\frac{\pi}{4} = 0.785398&lt;/script&gt;.
+That said, the true power of the Monte Carlo algorithm comes from the fact that we may now integrate somewhat arbitrary functions, for a good example of this, see the next section!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot; name=&quot;BatmanCurve&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;integrating-the-batman-curve&quot;&gt;Integrating the Batman Curve&lt;/h2&gt;
+
+&lt;p&gt;Now here’s the thing: Monte Carlo doesn’t need to use boxes and it doesn’t need to integrate obvious shapes. 
+Let’s talk about what you need to do to integrate non-obvious functions with one of our favorite superheroes: Batman!&lt;/p&gt;
+
+&lt;p&gt;To be clear: the Batman Curve was not created by me.
+I found it on &lt;a href=&quot;https://www.reddit.com/&quot;&gt;reddit&lt;/a&gt; and found all the information I needed &lt;a href=&quot;http://math.stackexchange.com/questions/54506/is-this-batman-equation-for-real&quot;&gt;on this math stack exchange post&lt;/a&gt;.
+In addition, &lt;a href=&quot;http://mathworld.wolfram.com/BatmanCurve.html&quot;&gt;WolframMathWorld had a decent page with the integral on it&lt;/a&gt;.
+Because the Batman Curve is difficult to integrate (though not impossible by any means!) and it has a clear analytically-defined integral to compare our Monte Carlo integration algorithm against, it was the perfect choice to test some things out.&lt;/p&gt;
+
+&lt;p&gt;First things first, for this integral, we were not using a standard box as described above. Instead we were using an oval. 
+Honestly, the objects don’t matter, but I thought it was worthwhile to point out that the area of the oval is simple &lt;script type=&quot;math/tex&quot;&gt;\pi \times Shortest\ distance \times Longest\ distance&lt;/script&gt;, so &lt;script type=&quot;math/tex&quot;&gt;\pi \times Radius^2&lt;/script&gt; with the shortest and longest distances to the oval from the origin as the radii.&lt;/p&gt;
+
+&lt;p&gt;The batman curve was a little tricky, we had to split it into the following equations (&lt;a href=&quot;http://math.stackexchange.com/questions/54506/is-this-batman-equation-for-real&quot;&gt;image created by Jack in the previously mentioned math stack exchange post&lt;/a&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i.stack.imgur.com/EHNR8.png&quot; alt=&quot;Image of equations, found here: http://math.stackexchange.com/questions/54506/is-this-batman-equation-for-real&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Which, when plotted provide:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/Batman/simple_bat.png&quot; alt=&quot;Batman Curve&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then we had to write a simple function to determine if a point inside the oval was within the Batman Curve or not. 
+To do this, we divided the curve into the following sections:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/Batman/batblocks.png&quot; alt=&quot;Batman Curve with blocks&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And here is a visualization of the output:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/Batman/batman.gif&quot; alt=&quot;gif of Batman Monte Carlo&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is the function (Nothing special, really):&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;// Function to check if we are in batman function for monte_carlo
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_batman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ori&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Determine x and y locations
+&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ori&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ori&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing left upper wing
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;9.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing left shoulder
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.710523708715754&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; 
+                     &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.355261854357877&lt;/span&gt;
+                     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing exterior left ear
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;9.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing interior left ear
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing top of head
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing interior right ear
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing exterior right ear
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;9.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+        &lt;span class=&quot;c1&quot;&gt;// Drawing right shoulder
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.710523708715754&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; 
+                     &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.355261854357877&lt;/span&gt;
+                     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        
+        &lt;span class=&quot;c1&quot;&gt;// Drawing right upper wing
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;9.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;// Drawing bottom left wing
+&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+             &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;9.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;// Drawing bottom wing
+&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+             &lt;span class=&quot;c1&quot;&gt;//return false;
+&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+                       &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.09137221374655434&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+                             &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+             &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;// Drawing bottom right wing
+&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+             &lt;span class=&quot;c1&quot;&gt;//return true;
+&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;9.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/leios/simuleios/blob/master/visualization/monte_carlo/monte_carlo_vis.cpp&quot;&gt;The full code is available here&lt;/a&gt;.
+ Note that it is a little messy and long.
+ That’s because the we used &lt;a href=&quot;https://www.cairographics.org/&quot;&gt;Cairo&lt;/a&gt; to do the visualization, which added a bunch of extra lines to the code.&lt;/p&gt;
+
+&lt;p&gt;Overall, this was a pretty fun side-project!&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading!&lt;/p&gt;
+</content>
+  </entry>
  
   <entry>
    <title>Invisible Lens</title>
@@ -56,9 +336,9 @@ bout, but for the most part, the mean the following:&lt;/p&gt;
   &lt;li&gt;[Faraday’s Law] The electric field is related to the change in magnetic field over time&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;For our purposes, we only care about the last two: Amphere’s Law and Faraday’s Law. These relate the electric and magnetic fields as they change in time. Basically, they mean that whenever the electric field changes in one direction, the magnetic field must change in another direction, and any time the magnetic field changes in some direction, the electric field must change in another direction. Because of these laws, the electric and magnetic fields must always be perpendicular. &lt;/p&gt;
+&lt;p&gt;For our purposes, we only care about the last two: Amphere’s Law and Faraday’s Law. These relate the electric and magnetic fields as they change in time. Basically, they mean that whenever the electric field changes in one direction, the magnetic field must change in another direction, and any time the magnetic field changes in some direction, the electric field must change in another direction. Because of these laws, the electric and magnetic fields must always be perpendicular.&lt;/p&gt;
 
-&lt;p&gt;In the case of light, this means that the electric field may move up and down, while the magnetic field moves in and out and the light itself moves forward. In this way, light is a truly 3-dimensional object. &lt;/p&gt;
+&lt;p&gt;In the case of light, this means that the electric field may move up and down, while the magnetic field moves in and out and the light itself moves forward. In this way, light is a truly 3-dimensional object.&lt;/p&gt;
 
 &lt;p&gt;But how does this related to the whole ray vs wave argument? Well, the electromagnetic wave that is light moves forward, but is made of two diffferent waveforms. This means that when we look at light from a distance, it acts as a ray. We don’t even notice the fact that it is a wave hidden in disguise; however, if we start looking closer… all of a sudden we realize that there are some wave-like properties to deal with like diffraction. Now, to be clear: these wave-like phenomenon are only noticeable when the distance in which we are interacting with the light is comparable to the wavelength of the light.&lt;/p&gt;
 
@@ -66,7 +346,7 @@ bout, but for the most part, the mean the following:&lt;/p&gt;
 
 &lt;p&gt;When we consider light as a ray, it interacts with a lens via Snell’s Law:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt; n _1 \sin (\theta _1)  = n _2 \sin (\theta _2) &lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n _1 \sin (\theta _1)  = n _2 \sin (\theta _2)&lt;/script&gt;
 
 &lt;p&gt;This equation basically relates the angle of a wave entering a lens with the angle of a wave within the lens, itself. In this case, &lt;em&gt;n&lt;/em&gt; is something known as an “Index of Refraction,” which is basically a ratio of how dens a medium is when compared to the outside air. If we draw a line perpendicular to the surface of the lens, and assume that the lens is denser than the air outside of it, then the ray will bend towards that line as it enters the lens. If it leaves the lens, it will bend back to the angle it was before.&lt;/p&gt;
 
@@ -78,7 +358,7 @@ bout, but for the most part, the mean the following:&lt;/p&gt;
 
 &lt;p&gt;Well, yes. When we consider light to be a ray, it is totally negligible; however, if we consider light to be a wave… we now need to make sure that the time delay perfectly aligns with the light such that the wavefronts do not look disturbed.&lt;/p&gt;
 
-&lt;p&gt;In order to really do this system justice, we need to simulate it twice, once with time-dependent ray-tracing and another with one of the most useful physics algorithms out there: Finite-Difference Time Domain (FDTD). That’s exactly what we are going to do! &lt;/p&gt;
+&lt;p&gt;In order to really do this system justice, we need to simulate it twice, once with time-dependent ray-tracing and another with one of the most useful physics algorithms out there: Finite-Difference Time Domain (FDTD). That’s exactly what we are going to do!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;&quot; name=&quot;code&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -95,7 +375,7 @@ bout, but for the most part, the mean the following:&lt;/p&gt;
 &lt;h2 id=&quot;finite-difference-time-domain-fdtd&quot;&gt;Finite Difference Time Domain (FDTD)&lt;/h2&gt;
 &lt;p&gt;The Finite Difference Time Domain (FDTD) method is one of the most useful computational methods in the field of electricity and magnetism (which is a pretty active field, if you know the right people). What is it? It’s basically a simulation of the Electric and Magnetic fields in a typical electromagnetic wave. How does it work? Well, that might be a little complicated to explain, so let’s start with something simple-ish: Maxwell’s Equations.&lt;/p&gt;
 
-&lt;p&gt;Again, for FDTD simulations we only care about Amphere’s Law and Faraday’s Law because we are trying to find a way to relate the electric and magnetic field in a wave. I mean, for this purpose, who cares if charge is conserved or if there are no such things as magnetic monopoles? &lt;/p&gt;
+&lt;p&gt;Again, for FDTD simulations we only care about Amphere’s Law and Faraday’s Law because we are trying to find a way to relate the electric and magnetic field in a wave. I mean, for this purpose, who cares if charge is conserved or if there are no such things as magnetic monopoles?&lt;/p&gt;
 
 &lt;p&gt;From this information, it would look like we have equations and we know what electromagnetic waves should look like, so that should mean that we are set to start our simulation, right?&lt;/p&gt;
 
@@ -110,14 +390,14 @@ bout, but for the most part, the mean the following:&lt;/p&gt;
 
 &lt;p&gt;Let’s constrain ourselves to 1 dimension for now and a row of points. Each point will correspond to the electric field at some point in space. With only this one line, we could enforce an electric field distribution by setting all the points to appropriate values and waving our hands in the air like we just don’t care; however, this distribution would be stuck, unmoving for all eternity. How do we get it to move?&lt;/p&gt;
 
-&lt;p&gt;Well, we introduce a string of magnetic field points exactly halfway between each electric field point. In this case, though, we do not assign the magnetic field values. Instead, we allow the magnetic field to be calculated from the electric field – where each individual magnetic field point is related to the average of the two nearest electric field points. &lt;/p&gt;
+&lt;p&gt;Well, we introduce a string of magnetic field points exactly halfway between each electric field point. In this case, though, we do not assign the magnetic field values. Instead, we allow the magnetic field to be calculated from the electric field – where each individual magnetic field point is related to the average of the two nearest electric field points.&lt;/p&gt;
 
-&lt;p&gt;So now we have a bit of a situation. The magnetic field is going to change in the very next time step! This is super exciting because it means that the magnetic field is changing with time. What else happens when the magnetic field changes with time? &lt;/p&gt;
+&lt;p&gt;So now we have a bit of a situation. The magnetic field is going to change in the very next time step! This is super exciting because it means that the magnetic field is changing with time. What else happens when the magnetic field changes with time?&lt;/p&gt;
 
 &lt;p&gt;Right! The electric field also changes! Of course, this is an endless cycle, because the moment the electric field changes, the magnetic field will also change. And then the electric field will change again!
-In this way, we have simulated Maxwell’s equations in distritized time and space with an incredibly intuitive method. &lt;/p&gt;
+In this way, we have simulated Maxwell’s equations in distritized time and space with an incredibly intuitive method.&lt;/p&gt;
 
-&lt;p&gt;Now, I know what you are thinking, “Let’s just plug in this newfangled FDTD nonsense to our index of refraction profile and move on with our lives!” The truth is that life is not that simple. &lt;/p&gt;
+&lt;p&gt;Now, I know what you are thinking, “Let’s just plug in this newfangled FDTD nonsense to our index of refraction profile and move on with our lives!” The truth is that life is not that simple.&lt;/p&gt;
 
 &lt;p&gt;Just because we can simulate a 1 dimensional wave does not mean we can simulate a lens in 2 dimensions. We need to make a few modifications, some of which are easier than others:&lt;/p&gt;
 
@@ -133,7 +413,7 @@ In this way, we have simulated Maxwell’s equations in distritized time and spa
 
 &lt;h3 id=&quot;total-field-scattered-field-tfsf-boundaries&quot;&gt;Total-Field Scattered-Field (TFSF) boundaries&lt;/h3&gt;
 
-&lt;p&gt;What is a Total-Field Scattered-Field (TFSF) boundary? Well, I am glad you asked! It is a boundary that splits your electromagnetic wave into two parts: &lt;/p&gt;
+&lt;p&gt;What is a Total-Field Scattered-Field (TFSF) boundary? Well, I am glad you asked! It is a boundary that splits your electromagnetic wave into two parts:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Total field&lt;/li&gt;
@@ -150,7 +430,7 @@ In this way, we have simulated Maxwell’s equations in distritized time and spa
 
 &lt;h3 id=&quot;absorbing-boundary-conditions-abc&quot;&gt;Absorbing Boundary Conditions (ABC)&lt;/h3&gt;
 
-&lt;p&gt;So, we have a problem. When the wave hits the edge of a box, it bounces back. Why? Well, it’s still trying to solve Maxwell’s equations, right? This means that the magnetic field changes based on the electric field and the electric field changes based on the magnetic field. In this case, if the electric field gets stuck on a wall, our algorithm will just resolve Maxwell’s equations and send the wave back where it came from. This can lead to some interesting physics, but it might not be what you want all the time. &lt;/p&gt;
+&lt;p&gt;So, we have a problem. When the wave hits the edge of a box, it bounces back. Why? Well, it’s still trying to solve Maxwell’s equations, right? This means that the magnetic field changes based on the electric field and the electric field changes based on the magnetic field. In this case, if the electric field gets stuck on a wall, our algorithm will just resolve Maxwell’s equations and send the wave back where it came from. This can lead to some interesting physics, but it might not be what you want all the time.&lt;/p&gt;
 
 &lt;p&gt;Let’s say we want to pretend our wave is ongoing for all eternity. In this case, we need to do something to our very last elements in our row (or grid in 2 dimensions). What do we need to do? Well, we need to set up a little trap. Sure, we’ll allow the electric and magnetic field to move to the very last grid poing, but when they do, we do something nasty:&lt;/p&gt;
 
@@ -190,7 +470,7 @@ direction: forward. Why? Because of a number of things. Every natural
 time-dependent phenomenon has a reason for moving in the direction it does.
 Sure, there are some physics equations that are essentially time-independent, 
 but those are another story entirely. For the most part, we call the reason 
-time tends to move forward an “arrow of time.” &lt;/p&gt;
+time tends to move forward an “arrow of time.”&lt;/p&gt;
 
 &lt;p&gt;What is an arrow of time? Well, there are quite a few.&lt;/p&gt;
 
@@ -213,7 +493,7 @@ No matter what you do (assuming you are using currently known physics), you will
 not be able to physically reverse an arrow of time. You just cannot; however,
 some scientists could not help but ponder what kind of being could reverse time.&lt;/p&gt;
 
-&lt;p&gt;This leads us to Maxwell’s Demon. &lt;/p&gt;
+&lt;p&gt;This leads us to Maxwell’s Demon.&lt;/p&gt;
 
 &lt;p&gt;There is an arrow of time known as the thermodynamic arrow of time, which is 
 essentially the second law of thermodynamics:&lt;/p&gt;
@@ -224,7 +504,7 @@ essentially the second law of thermodynamics:&lt;/p&gt;
 
 &lt;p&gt;It doesn’t sound menacing, but it is. Basically this means that in any thermal 
 process where we can measure the entropy, things will end up more chaotic than
-they started. &lt;/p&gt;
+they started.&lt;/p&gt;
 
 &lt;p&gt;It probably still doesn’t make any sense, so let’s pretend you had a large
 rectangular box in your hands. On the right side, there are only white marbles
@@ -249,7 +529,7 @@ and when the marbles were all mixed up, there was the highest amount. Entropy,
 then, is basically the amount of disorder in a system. This process of shaking
 a box over and over again shows the second law of thermodynamics. If we take an
 ordered state (one with little entropy) and shake it, it will become a 
-disordered one (one with high entropy). &lt;/p&gt;
+disordered one (one with high entropy).&lt;/p&gt;
 
 &lt;p&gt;Of course this is the case, right! We all know how things thermalize… And yet,
 looking at this single arrow, scientists have thought of a way to reverse it. To
@@ -281,7 +561,7 @@ particles to pass through. A simple concept with revolutionary results!&lt;/p&gt
 
 &lt;p&gt;The code for out Maxwell’s Demon simulation can be found &lt;a href=&quot;https://github.com/leios/simuleios/tree/master/MD/demon&quot;&gt;here&lt;/a&gt;, feel free to check it out! It is a simple event-driven &lt;a href=&quot;http://introcs.cs.princeton.edu/java/assignments/collisions.html&quot;&gt;Molecular Dynamics&lt;/a&gt; (MD) simulation in 3 dimensions. What does this mean?&lt;/p&gt;
 
-&lt;p&gt;Well, imagine that every particle in the simulation is a hard sphere of sorts – like billiard balls. If we give them all an initial kick, they’ll be moving all around and bouncing off each other, like billiard balls do. In this case, we know how the should interact with each other (it’s a super well-solved system). We basically need to take into account 2 interaction types: &lt;/p&gt;
+&lt;p&gt;Well, imagine that every particle in the simulation is a hard sphere of sorts – like billiard balls. If we give them all an initial kick, they’ll be moving all around and bouncing off each other, like billiard balls do. In this case, we know how the should interact with each other (it’s a super well-solved system). We basically need to take into account 2 interaction types:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Particle on particle&lt;/li&gt;
