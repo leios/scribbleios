@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>LeiosOS</title>
- <link href="https://leios.github.io/atom.xml" rel="self"/>
- <link href="https://leios.github.io/"/>
- <updated>2016-07-10T20:29:58+09:00</updated>
- <id>https://leios.github.io</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2018-04-30T18:13:20+09:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>James Schloss</name>
    <email></email>
@@ -13,10 +13,49 @@
 
  
   <entry>
+   <title>iAn argument for livecoding</title>
+   <link href="http://localhost:4000/livecoding"/>
+   <updated>2016-08-27T00:00:00+09:00</updated>
+   <id>http://localhost:4000/livecoding</id>
+   <content type="html">&lt;h2 id=&quot;an-argument-for-livecoding&quot;&gt;An argument for livecoding&lt;/h2&gt;
+
+&lt;p&gt;As some of you may know, I run a channel on twitch that is almost exclusively devoted to computational physics.
+Almost every morning from 5-7AM JST, I am there learning some sort of physics algorithm, and I have to admit that it has had a dramatically positive impact on my programming technique.&lt;/p&gt;
+
+&lt;p&gt;In essence, this post boils down to the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I want to see more people livecoding.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I honestly believe it is a perfect way to hone your programming skills and to become better at the craft for a number of reasons:&lt;/p&gt;
+
+&lt;h2 id=&quot;1-it-is-the-ultimate-form-of-pair-programming&quot;&gt;1. It is the ultimate form of pair programming&lt;/h2&gt;
+
+&lt;p&gt;As of late, I have been hearing many programmers talk about peer programming, where a company or group of individuals pair an advanced programmer with a novice in order to help the novice become better and begin developing his or her own code.
+It is a great idea that helps the mentor better develop their own abilities while also helping the mentee learn the ropes.&lt;/p&gt;
+
+&lt;p&gt;livecoding allows you to become part of a community of pair programmers. 
+They watch and learn from you while also suggesting ways for you to improve or more efficient ways to write the code.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-it-forces-you-to-focus-on-your-faults&quot;&gt;2. It forces you to focus on your faults&lt;/h2&gt;
+
+&lt;p&gt;There have been quite a few times that I have&lt;/p&gt;
+
+&lt;p&gt;Now, you might be hesitant to start livecoding for the following reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;your code is crap&lt;/li&gt;
+  &lt;li&gt;you don’t know how to get started&lt;/li&gt;
+  &lt;li&gt;you are a boring person&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+  </entry>
+ 
+  <entry>
    <title>Batman Integration</title>
-   <link href="https://leios.github.io/Batman_Montecarlo"/>
+   <link href="http://localhost:4000/Batman_Montecarlo"/>
    <updated>2016-07-10T00:00:00+09:00</updated>
-   <id>https://leios.github.io/Batman</id>
+   <id>http://localhost:4000/Batman</id>
    <content type="html">&lt;div class=&quot;youtube-16-9&quot;&gt;
   &lt;iframe height=&quot;100%&quot; width=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/AyBNnkYrSWY&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
@@ -87,8 +126,8 @@ For example: How did we know whether a random point on the plane was within the 
 Well, we simply had to plug it into a function that checked to see whether a line drawn from the origin to the x-y location of the random point was greater or less than a provided radius for the circle.
 The code basically looks like:&lt;/p&gt;
 
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Function to check whether point is in circle or not
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in_circle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Function to check whether point is in circle or not
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in_circle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
 
     &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -100,8 +139,7 @@ The code basically looks like:&lt;/p&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;That said, the true power of the Monte Carlo algorithm comes from the fact that we may now integrate somewhat arbitrary functions, for a good example of this, see the next section!&lt;/p&gt;
 
@@ -139,9 +177,9 @@ To do this, we divided the curve into the following sections:&lt;/p&gt;
 
 &lt;p&gt;Here is the function (Nothing special, really):&lt;/p&gt;
 
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;c1&quot;&gt;// Function to check if we are in batman function for monte_carlo
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_batman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ori&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_batman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ori&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
 
     &lt;span class=&quot;c1&quot;&gt;// Determine x and y locations
 &lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ori&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -301,8 +339,7 @@ To do this, we divided the curve into the following sections:&lt;/p&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/leios/simuleios/blob/master/visualization/monte_carlo/monte_carlo_vis.cpp&quot;&gt;The full code is available here&lt;/a&gt;.
  Note that it is a little messy and long.
@@ -316,9 +353,9 @@ To do this, we divided the curve into the following sections:&lt;/p&gt;
  
   <entry>
    <title>Invisible Lens</title>
-   <link href="https://leios.github.io/invlens"/>
+   <link href="http://localhost:4000/invlens"/>
    <updated>2015-11-20T00:00:00+09:00</updated>
-   <id>https://leios.github.io/InvLens</id>
+   <id>http://localhost:4000/InvLens</id>
    <content type="html">&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;#bg&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#code&quot;&gt;Time-dependent raytracing&lt;/a&gt;&lt;/li&gt;
@@ -466,9 +503,9 @@ In this way, we have simulated Maxwell’s equations in distritized time and spa
  
   <entry>
    <title>Maxwell's Demon</title>
-   <link href="https://leios.github.io/99MaxwellsDemon"/>
+   <link href="http://localhost:4000/99MaxwellsDemon"/>
    <updated>2015-11-01T00:00:00+09:00</updated>
-   <id>https://leios.github.io/MaxwellsDemon</id>
+   <id>http://localhost:4000/MaxwellsDemon</id>
    <content type="html">&lt;div class=&quot;youtube-16-9&quot;&gt;
   &lt;iframe height=&quot;100%&quot; width=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/5niDIoptyIU&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;

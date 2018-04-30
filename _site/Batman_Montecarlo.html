@@ -59,6 +59,12 @@
       
         
           
+            <a class="sidebar-nav-item" href="/livecoding"> iAn argument for livecoding <span style="font-family:monospace; color: purple">BLOG</span></a>
+          
+        
+      
+        
+          
             <a class="sidebar-nav-item active" href="/Batman_Montecarlo"> Batman Integration <span style="font-family:monospace; color: green">100%</span></a>
           
         
@@ -84,7 +90,7 @@
 
     </nav>
 
-    <p>&copy; 2016. All rights reserved.</p>
+    <p>&copy; 2018. All rights reserved.</p>
   </div>
 </div>
 
@@ -162,8 +168,8 @@ For example: How did we know whether a random point on the plane was within the 
 Well, we simply had to plug it into a function that checked to see whether a line drawn from the origin to the x-y location of the random point was greater or less than a provided radius for the circle.
 The code basically looks like:</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Function to check whether point is in circle or not
-</span><span class="n">bool</span> <span class="n">in_circle</span><span class="p">(</span><span class="n">pos</span> <span class="n">loc</span><span class="p">,</span> <span class="n">pos</span> <span class="n">origin</span><span class="p">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">){</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function to check whether point is in circle or not
+</span><span class="kt">bool</span> <span class="n">in_circle</span><span class="p">(</span><span class="n">pos</span> <span class="n">loc</span><span class="p">,</span> <span class="n">pos</span> <span class="n">origin</span><span class="p">,</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">){</span>
 
     <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">loc</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">origin</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
@@ -175,8 +181,7 @@ The code basically looks like:</p>
         <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>That said, the true power of the Monte Carlo algorithm comes from the fact that we may now integrate somewhat arbitrary functions, for a good example of this, see the next section!</p>
 
@@ -214,9 +219,9 @@ To do this, we divided the curve into the following sections:</p>
 
 <p>Here is the function (Nothing special, really):</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1">// Function to check if we are in batman function for monte_carlo
-</span><span class="n">bool</span> <span class="n">is_batman</span><span class="p">(</span><span class="n">pos</span> <span class="n">dot</span><span class="p">,</span> <span class="n">pos</span> <span class="n">ori</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">){</span>
+</span><span class="kt">bool</span> <span class="n">is_batman</span><span class="p">(</span><span class="n">pos</span> <span class="n">dot</span><span class="p">,</span> <span class="n">pos</span> <span class="n">ori</span><span class="p">,</span> <span class="kt">double</span> <span class="n">scale</span><span class="p">){</span>
 
     <span class="c1">// Determine x and y locations
 </span>    <span class="kt">double</span> <span class="n">pos_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">dot</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">ori</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span><span class="p">;</span>
@@ -376,8 +381,7 @@ To do this, we divided the curve into the following sections:</p>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><a href="https://github.com/leios/simuleios/blob/master/visualization/monte_carlo/monte_carlo_vis.cpp">The full code is available here</a>.
  Note that it is a little messy and long.
