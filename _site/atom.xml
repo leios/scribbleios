@@ -4,52 +4,13 @@
  <title>LeiosOS</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-04-30T18:13:20+09:00</updated>
+ <updated>2018-05-20T17:04:06+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>James Schloss</name>
    <email></email>
  </author>
 
- 
-  <entry>
-   <title>iAn argument for livecoding</title>
-   <link href="http://localhost:4000/livecoding"/>
-   <updated>2016-08-27T00:00:00+09:00</updated>
-   <id>http://localhost:4000/livecoding</id>
-   <content type="html">&lt;h2 id=&quot;an-argument-for-livecoding&quot;&gt;An argument for livecoding&lt;/h2&gt;
-
-&lt;p&gt;As some of you may know, I run a channel on twitch that is almost exclusively devoted to computational physics.
-Almost every morning from 5-7AM JST, I am there learning some sort of physics algorithm, and I have to admit that it has had a dramatically positive impact on my programming technique.&lt;/p&gt;
-
-&lt;p&gt;In essence, this post boils down to the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;I want to see more people livecoding.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I honestly believe it is a perfect way to hone your programming skills and to become better at the craft for a number of reasons:&lt;/p&gt;
-
-&lt;h2 id=&quot;1-it-is-the-ultimate-form-of-pair-programming&quot;&gt;1. It is the ultimate form of pair programming&lt;/h2&gt;
-
-&lt;p&gt;As of late, I have been hearing many programmers talk about peer programming, where a company or group of individuals pair an advanced programmer with a novice in order to help the novice become better and begin developing his or her own code.
-It is a great idea that helps the mentor better develop their own abilities while also helping the mentee learn the ropes.&lt;/p&gt;
-
-&lt;p&gt;livecoding allows you to become part of a community of pair programmers. 
-They watch and learn from you while also suggesting ways for you to improve or more efficient ways to write the code.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-it-forces-you-to-focus-on-your-faults&quot;&gt;2. It forces you to focus on your faults&lt;/h2&gt;
-
-&lt;p&gt;There have been quite a few times that I have&lt;/p&gt;
-
-&lt;p&gt;Now, you might be hesitant to start livecoding for the following reasons:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;your code is crap&lt;/li&gt;
-  &lt;li&gt;you don’t know how to get started&lt;/li&gt;
-  &lt;li&gt;you are a boring person&lt;/li&gt;
-&lt;/ol&gt;
-
-</content>
-  </entry>
  
   <entry>
    <title>Batman Integration</title>
