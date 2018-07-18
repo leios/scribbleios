@@ -15,7 +15,7 @@ A few quick notes:
 
 * My actual research will not be hosted on this site (at least not until after it has been published).
 
-* Feel free to comment on anything or drop me a [tweet](https://twitter.com/LeiOS).
+* Feel free to comment on anything or drop me a [tweet](https://twitter.com/LeiosOS).
 If I am wrong about something, I am wrong about something. 
 Be sure to let me know so I can fix it in the near future!
 
