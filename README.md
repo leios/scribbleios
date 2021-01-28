@@ -1,12 +1,17 @@
-# LeiosOS
+# Scribbleios
 
-Hello and welcome to my website, hosted by Github. I am James Schloss, a PhD student at the Okinawa Institute of Science and Technology (OIST). Feel free to ask me any question you like, and I will do my best to answer it -- preferrably with code! 
+Hello, I am Dr. James Schloss.
+I finished my PhD at the Okinawa Institute of Science and Technology Graduate University in December 2019.
+Ever since I was young, I have had a passion for writing, which has manifested itself in many forms, such as with my online book on algorithms, the [algorithm-archive.org](algorithm-archive.org).
 
-On this site, I will post all of my fantastic online adventures! By that I mean that I'll be posting science stuff. A lot of science stuff. In fact, any time I do something science-y that is not related to research, I will put it here. 
+This project is significantly different than anything else I have done before.
+It is a bit less technical, and a bit morecreative.
+My goal is to do a little creative writing every day and post it here.
 
-Most of these projects have been livecoded on [Twitch](http://www.twitch.tv/simuleios). Feel free to join us at some point! I stream daily from 5-7 AM JST. I don't know what time that is in your timezone, but it works pretty well for Europeans and Americans. I will also make youtube videos on my [channel](http://youtube.com/c/leiosos) related to the content I am coding up every month, so feel free to check that out as well.
+Most of these writings will be prompted via [reddit.com/r/writingprompts](reddit.com/r/writingprompts), but some of it might be completely fresh!
+I'm ultimately trying to pave some path forward towards becoming an author some day, and the only way to do that is to practice.
 
-My theme is called [Hyde](https://github.com/poole/hyde). Feel free to check it out!
+So that's what this is, a place to practice.
 
-Peace,
-James
+Feel free to leave comments on [github](https://github.com/leios/leios.github.io), or send me a message on [twitter](https://twitter.com/LeiosOS).
+I would love to hear your feedback!
