@@ -18,7 +18,7 @@ git clean -fx _book
 git add .
 
 # commit
-git commit -a -m $1
+git commit -a -m "publish site"
 
 # push to the origin
 git push origin master
