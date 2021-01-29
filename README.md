@@ -15,3 +15,8 @@ So that's what this is, a place to practice.
 
 Feel free to leave comments on [github](https://github.com/leios/leios.github.io), or send me a message on [twitter](https://twitter.com/LeiosOS).
 I would love to hear your feedback!
+
+All of the written text on this site was created by [James Schloss](https://github.com/leio) and is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+
+[<p><img  class="center" src="content/cc/by-nc-sa.svg" /></p>](https://creativecommons.org/licenses/by-sa/4.0/)
+
