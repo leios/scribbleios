@@ -5,7 +5,7 @@ npm install && npm build
 git checkout master
 
 # pull the latest updates
-git pull origin development --rebase
+git rebase development
 
 # copy the static site files into the current directory.
 cp -R _book/* .
