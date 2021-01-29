@@ -1,11 +1,11 @@
 # install the plugins and build the static site
 npm install && npm build
 
-# checkout to the gh-pages branch
-git checkout gh-pages
+# checkout to the master branch
+git checkout master
 
 # pull the latest updates
-git pull origin gh-pages --rebase
+git pull origin master --rebase
 
 # copy the static site files into the current directory.
 cp -R _book/* .
@@ -18,10 +18,10 @@ git clean -fx _book
 git add .
 
 # commit
-git commit -a -m "Update docs"
+git commit -a -m $1
 
 # push to the origin
-git push origin gh-pages
+git push origin master
 
 # checkout to the master branch
-git checkout master
+git checkout development
