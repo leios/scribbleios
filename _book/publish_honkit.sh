@@ -21,7 +21,7 @@ git add .
 git commit -a -m "publish site"
 
 # push to the origin
-git push origin master
+git push origin master --force
 
 # checkout to the master branch
 git checkout development
