@@ -2,7 +2,7 @@
 git checkout master
 
 # pull the latest updates
-git rebase development
+git reset --hard development
 
 # build honkit
 npx honkit build
