@@ -1,11 +1,11 @@
-# install the plugins and build the static site
-npm install && npm build
-
 # checkout to the master branch
 git checkout master
 
 # pull the latest updates
 git rebase development
+
+# build honkit
+npx honkit build
 
 # copy the static site files into the current directory.
 cp -R _book/* .
