@@ -6,6 +6,7 @@
 
 ### January
 
+* [A Mother's Love](content/2021/January/30.md)
 * [The Creation Machine](content/2021/January/29.md)
 * [The Great Collapse](content/2021/January/28.md)
 * [Losing Myself](content/2021/January/27.md)
