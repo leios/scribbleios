@@ -6,6 +6,7 @@
 
 ### January
 
+* [The G00Gl3 Interview](content/2021/January/31.md)
 * [A Mother's Love](content/2021/January/30.md)
 * [The Creation Machine](content/2021/January/29.md)
 * [The Great Collapse](content/2021/January/28.md)
