@@ -6,6 +6,7 @@
 
 ## February
 
+* [The Master's Disciple](content/2021/February/02.md)
 * [The Potion Master](content/2021/February/01.md)
 
 ### January
