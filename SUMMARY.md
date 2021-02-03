@@ -6,6 +6,7 @@
 
 ## February
 
+* [A Talentless Student](content/2021/February/03.md)
 * [The Master's Disciple](content/2021/February/02.md)
 * [The Potion Master](content/2021/February/01.md)
 
