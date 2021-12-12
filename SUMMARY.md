@@ -4,6 +4,10 @@
 
 ## 2021
 
+## December
+* [The NPC](content/2021/December/12.md)
+
+
 ## February
 
 * [A Talentless Student](content/2021/February/03.md)
