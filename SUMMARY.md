@@ -4,6 +4,11 @@
 
 ## 2021
 
+## January
+* [Describing a Tree](content/2022/January/02.md)
+
+## 2021
+
 ## December
 * [The NPC](content/2021/December/12.md)
 
