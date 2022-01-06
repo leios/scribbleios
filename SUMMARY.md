@@ -2,9 +2,10 @@
 
 * [About Scribbleios](README.md)
 
-## 2021
+## 2022
 
 ## January
+* [The Future](content/2022/January/06.md)
 * [Describing a Tree](content/2022/January/02.md)
 
 ## 2021
