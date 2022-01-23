@@ -7,6 +7,7 @@
 ## January
 * [The Future](content/2022/January/06.md)
 * [Describing a Tree](content/2022/January/02.md)
+* [A Waste of Time](content/2022/January/23.md)
 
 ## 2021
 
