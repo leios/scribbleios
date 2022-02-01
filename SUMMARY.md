@@ -4,11 +4,14 @@
 
 ## 2022
 
+## February
+* [Academic Correspondences](content/2022/February/01.md)
+
 ## January
-* [The Future](content/2022/January/06.md)
-* [Describing a Tree](content/2022/January/02.md)
-* [A Waste of Time](content/2022/January/23.md)
 * [The Beowulf Poet](content/2022/January/31.md)
+* [A Waste of Time](content/2022/January/23.md)
+* [Describing a Tree](content/2022/January/02.md)
+* [The Future](content/2022/January/06.md)
 
 ## 2021
 
