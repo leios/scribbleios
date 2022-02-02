@@ -5,6 +5,7 @@
 ## 2022
 
 ## February
+* [Bittersweet Memories](content/2022/February/02.md)
 * [Academic Correspondences](content/2022/February/01.md)
 
 ## January
