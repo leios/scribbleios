@@ -5,6 +5,7 @@
 ## 2022
 
 ## February
+* [Wikipedia: Peter Shelly](content/2022/February/11.md)
 * [Bittersweet Memories](content/2022/February/02.md)
 * [Academic Correspondences](content/2022/February/01.md)
 
