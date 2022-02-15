@@ -5,6 +5,7 @@
 ## 2022
 
 ## February
+* [Walking to School](content/2022/February/15.md)
 * [Wikipedia: Peter Shelly](content/2022/February/11.md)
 * [Bittersweet Memories](content/2022/February/02.md)
 * [Academic Correspondences](content/2022/February/01.md)
