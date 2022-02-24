@@ -5,6 +5,7 @@
 ## 2022
 
 ## February
+* [Digital Selves](content/2022/February/24.md)
 * [Walking to School](content/2022/February/15.md)
 * [Wikipedia: Peter Shelly](content/2022/February/11.md)
 * [Bittersweet Memories](content/2022/February/02.md)
