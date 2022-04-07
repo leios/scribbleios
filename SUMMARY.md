@@ -4,8 +4,12 @@
 
 ## 2022
 
+## April
+* [The Humbler](content/2022/April/07.md)
+
 ## March
 * [The Conscious Actor](content/2022/March/30.md)
+
 ## February
 * [Digital Selves](content/2022/February/24.md)
 * [Walking to School](content/2022/February/15.md)
