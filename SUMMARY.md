@@ -5,6 +5,7 @@
 ## 2022
 
 ## April
+* [The Modern Blacksmith](content/2022/April/11.md)
 * [The Humbler](content/2022/April/07.md)
 
 ## March
