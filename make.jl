@@ -79,4 +79,5 @@ makedocs(
 
 deploydocs(;
     repo="github.com/leios/scribbleios",
+    versions = nothing,
 )
