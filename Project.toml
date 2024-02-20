@@ -1,4 +1,4 @@
-name = "site"
+name = "scribbleios"
 uuid = "43ef21f7-ab12-4fd6-b37e-70528d1ee7dd"
 authors = ["James Schloss <jrs.schloss@gmail.com>"]
 version = "0.1.0"
