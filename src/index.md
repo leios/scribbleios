@@ -18,5 +18,5 @@ I would love to hear your feedback!
 
 All of the written text on this site was created by [James Schloss](https://github.com/leio) and is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 
-[<p><img  class="center" src="src/content/cc/by-nc-sa.svg" /></p>](https://creativecommons.org/licenses/by-sa/4.0/)
+[![CC BY NC SA](./content/cc/by-nc-sa.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 

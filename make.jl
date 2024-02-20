@@ -4,7 +4,6 @@ makedocs(
     sitename="Scribbleios",
     authors="James Schloss (Leios)",
     pages = [
-        "General Information" => "content/index.md",
         "2024" => Any[
             "The Livestreaming Accident" => "content/2024/February/20.md",
         ],
