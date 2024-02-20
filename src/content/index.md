@@ -2,13 +2,13 @@
 
 Hello, I am Dr. James Schloss.
 I finished my PhD at the Okinawa Institute of Science and Technology Graduate University in December 2019.
-Ever since I was young, I have had a passion for writing, which has manifested itself in many forms, such as with my online book on algorithms, the [algorithm-archive.org](algorithm-archive.org).
+Ever since I was young, I have had a passion for writing, which has manifested itself in many forms, such as with my online book on algorithms, the [algorithm-archive](https://algorithm-archive.org).
 
 This project is significantly different than anything else I have done before.
 It is a bit less technical, and a bit morecreative.
 My goal is to do a little creative writing every day and post it here.
 
-Most of these writings will be prompted via [reddit.com/r/writingprompts](reddit.com/r/writingprompts), but some of it might be completely fresh!
+Most of these writings will be prompted via [reddit's r/writingprompts](https://reddit.com/r/writingprompts), but some of it might be completely fresh!
 I'm ultimately trying to pave some path forward towards becoming an author some day, and the only way to do that is to practice.
 
 So that's what this is, a place to practice.

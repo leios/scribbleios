@@ -1,2 +1,4 @@
 *.bak
-_book/*
+build/*
+Manifest.toml
+*.html
