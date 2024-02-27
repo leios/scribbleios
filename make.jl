@@ -7,6 +7,9 @@ makedocs(
         "2024" => Any[
             "The Livestreaming Accident" => "content/2024/February/20.md",
         ],
+        "2023" => Any[
+            "The Read Message" => "content/2023/2023.md",
+        ],
         "2022" => Any[
             "The Commute" => "content/2022/August/01.md",
             "The USB Hero" => "content/2022/May/10.md",
