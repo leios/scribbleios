@@ -13,10 +13,10 @@ I'm ultimately trying to pave some path forward towards becoming an author some 
 
 So that's what this is, a place to practice.
 
-Feel free to leave comments on [github](https://github.com/leios/leios.github.io), or send me a message on [twitter](https://twitter.com/LeiosOS).
+Feel free to leave comments on [github](https://github.com/leios/scribbleios), or send me a message on [twitter](https://twitter.com/LeiosOS).
 I would love to hear your feedback!
 
-All of the written text on this site was created by [James Schloss](https://github.com/leio) and is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+All of the written text on this site was created by [James Schloss](https://github.com/leios) and is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 
 [![CC BY NC SA](./content/cc/by-nc-sa.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 

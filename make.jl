@@ -5,6 +5,7 @@ makedocs(
     authors="James Schloss (Leios)",
     pages = [
         "2024" => Any[
+            "A Second Chance" => "content/2024/September/28.md",
             "The Livestreaming Accident" => "content/2024/February/20.md",
         ],
         "2023" => Any[
